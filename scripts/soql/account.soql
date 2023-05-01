@@ -1,0 +1,185 @@
+// Use .soql files to store SOQL queries.
+// You can execute queries in VS Code by selecting the
+//     query text and running the command:
+//     SFDX: Execute SOQL Query with Currently Selected Text
+
+//SELECT Id, Name, AnnualRevenue, Phone
+  //FROM Account
+  
+//SELECT Name, Profile.Name
+//FROM User
+//WHERE Profile.Name = 'NightWatcher' OR Profile.Name LIKE 'System%'
+
+//SELECT Name, RecordTypeId, RecordType.Name
+//FROM Boat__c
+//WHERE RecordType.Name LIKE '%boat%'
+
+//SELECT Name, CreatedBy.Name, Year_Built__c
+//FROM Boat__c
+//WHERE CreatedBy.Name = 'Jon Snow' AND Year_Built__c < LAST_YEAR
+
+//SELECT COUNT(Id)
+//FROM Boat__c
+//WHERE RecordType.Name = 'Speedboat'
+
+//SELECT Name, UserRole.Name
+//FROM User
+//WHERE UserRole.Name LIKE '%Sale%' OR UserRole.Name LIKE '%CEO%'
+
+//SELECT Subject, ActivityDate, WhoId, Who.Name
+//FROM Task
+//WHERE WhoId <> NULL
+
+//SELECT Subject, Contact.Name
+//FROM Case
+//WHERE Contact.Name <> NULL AND Subject LIKE '%Generator%'
+
+//SELECT Name, (SELECT Name FROM Boats__r)
+//FROM Account
+//WHERE Id IN (SELECT Current_Owner__c FROM Boat__c)
+
+//SELECT Name, (SELECT Subject FROM Cases WHERE Subject LIKE '%Generator%')
+//FROM Account
+//WHERE Id IN (SELECT AccountId FROM Case)
+
+//SELECT Name, (SELECT Name, StageName FROM Opportunities WHERE StageName = 'Closed Won')
+//FROM Account
+//WHERE Id IN (SELECT AccountId FROM Opportunity WHERE StageName = 'Closed Won')
+
+//SELECT Name, UserLicense.Name
+  //FROM User
+
+//  SELECT StageName, COUNT(Id), SUM(Amount)
+  // FROM Opportunity
+ //  GROUP BY StageName
+
+ //SELECT State, COUNT(Id) 
+ //FROM Lead
+ //GROUP BY State
+ //HAVING COUNT(Id) >= 2
+
+ //SELECT Status, COUNT(Id) 
+ //FROM Lead
+ //GROUP BY Status
+ //HAVING COUNT(Id) < 5
+
+ //SELECT Rating, COUNT(Id), SUM(AnnualRevenue)  
+ //FROM Account
+ //WHERE Rating != NULL
+ //GROUP BY Rating
+
+ //SELECT FirstName, LastName  
+ //FROM Contact
+ //WHERE LastName = 'Green'
+
+// SELECT Subject, Status, Priority 
+ //FROM Case
+ // WHERE Status = 'Closed'
+ // AND Priority = 'High'
+
+//SELECT Id, Name FROM Account WHERE Name = 'Sample Account %'
+
+//## Task 10: 
+//Write a SOQL query to retrieve the count of Case records where the Priority is High'.
+
+//## Task 11: 
+//Write a SOQL query to 
+//retrieve the Type and the count of Account records 
+//for each Type where the count of records is greater than 5.
+
+
+
+//SELECT COUNT(Id) FROM Case WHERE Priority = 'High'
+
+//SELECT Type, COUNT(Id) FROM Account GROUP BY Type HAVING COUNT(Id) > 5
+
+//## Task 1: 
+//Write a SOQL SELECT statement (Child to Parent) to 
+//retrieve the Name ,Account.Name and Email fields 
+//for all Contact records associated with an Account record 
+//where the Account.Name is equal to a Super Parent.
+
+//SELECT Name, Account.Name, Email
+ //FROM Contact
+ //WHERE Account.Name = 'Super Parent'
+
+ //SELECT Name, AnnualRevenue, (SELECT Name FROM Contacts )
+  //FROM Account
+  //WHERE Name LIKE '%S%'
+
+//SELECT Name, Amount FROM Opportunity WHERE AccountId = NULL
+
+//SELECT Id FROM Account WHERE Name = 'Super Parent' LIMIT 1
+
+//SELECT Name, Amount FROM Opportunity WHERE Account.Name = 'Super Parent'
+
+//SELECT Name, OwnerId FROM Contact WHERE Id = '003Dn00000IfBPWIA3'
+
+
+//SELECT Id FROM Contact WHERE Name = 'Avi Green' LIMIT 1
+
+//SELECT MAX(Amount) FROM Opportunity
+
+//SELECT MIN(CreatedDate) FROM Case
+
+// SELECT AVG(NumberOfEmployees) FROM Account WHERE Industry = 'Biotechnology'
+
+//SELECT SUM(Amount) FROM Opportunity WHERE StageName = 'Closed Won'
+
+//SELECT MAX(CreatedDate) FROM Account WHERE Type = 'Customer - Direct'
+
+//SELECT AVG(ExpectedRevenue) FROM Opportunity WHERE CloseDate = THIS_YEAR 
+
+//SELECT SUM(NumberOfEmployees) FROM Account WHERE Type LIKE '%Customer%' AND Industry = 'Energy'
+
+//SELECT MIN(LastModifiedDate) FROM Lead WHERE Status LIKE 'Open%'
+
+//SELECT AVG(Amount) FROM Opportunity WHERE StageName <> 'Closed Won'
+
+//SELECT COUNT(Id) FROM Case WHERE Priority = 'High'
+
+//SELECT Type, COUNT(Id) FROM Account GROUP BY Type HAVING COUNT(Id) > 5
+
+//SELECT Industry, MAX(AnnualRevenue), COUNT(Id) FROM Account GROUP BY Industry HAVING MAX(AnnualRevenue) > 1000000
+
+//SELECT LeadSource, AVG(NumberOfEmployees), COUNT(Id) FROM Lead GROUP BY LeadSource HAVING AVG(NumberOfEmployees) > 50
+
+//SELECT StageName, SUM(Amount), COUNT(Id) FROM Opportunity GROUP BY StageName HAVING SUM(Amount) > 100000
+
+//SELECT Name, Account.Name, Email FROM Contact WHERE Account.Name = 'Super Parent'
+
+//SELECT Name, AnnualRevenue, (SELECT Name FROM Contacts) FROM Account WHERE Name = 'Super Parent'
+
+//SELECT Id FROM Account WHERE Name = 'Super Parent' LIMIT 1
+
+//SELECT Name, Account.Name FROM Opportunity WHERE Name LIKE 'orphan%'
+
+//SELECT Name, Account.Name, StageName FROM Opportunity WHERE Account.Name = 'Super Parent'
+
+//SELECT Name FROM Contact WHERE Name = 'Super Jon' LIMIT 1
+
+//SELECT CaseNumber FROM Case WHERE ContactId = NULL
+
+//SELECT Subject, Contact.Name, Status FROM Case WHERE Contact.Name = 'Super Jon'
+
+//SELECT COUNT(Id) FROM Case WHERE IsClosed = TRUE 
+
+//SELECT COUNT(Id) MyOppsCount, SUM(Amount) AmountSum, MAX(Amount), MIN(Amount), AVG(Amount) FROM Opportunity
+
+//SELECT IsClosed, COUNT(Id) MyOppsCount FROM Opportunity GROUP BY IsClosed
+
+//SELECT StageName, Name, Account.Name FROM Opportunity WHERE IsClosed = FALSE AND Name LIKE '%a%'
+
+//SELECT Id, Name FROM Account WHERE Id IN (SELECT AccountId FROM Opportunity)
+
+//SELECT Id, Name FROM Account WHERE Id IN (SELECT AccountId FROM Opportunity)
+
+//SELECT FirstName, LastName FROM Contact
+
+//SELECT Id, Name, (SELECT Id, Name FROM Opportunities ) FROM Account WHERE Name = 'Skywalker Inc' LIMIT 1
+
+//SELECT Department, Id FROM Contact WHERE CreatedDate = TODAY
+
+//SELECT Name, Id  FROM UserRole WHERE DeveloperName = 'EasternSalesTeam' LIMIT 1
+
+SELECT Id, Subject, ActivityDate, Status FROM Task WHERE ActivityDate < TODAY

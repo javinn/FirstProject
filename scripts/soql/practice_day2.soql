@@ -1,0 +1,29 @@
+// Feel free to use SOQL Building(by flipping the page)
+// to observe what's the correct Object name and fields names 
+
+// Get All the Profiles Id, Name fields 
+// if the profile name is 
+// System Administator, Standard User , Standard Platform User
+
+
+// Get All the Role , Id, Name From Role Standard Object 
+
+// Get All the RecordType , Id, Name From RecordType Standard Object 
+
+//SELECT Id, Name, DeveloperName
+  //FROM UserRole
+
+//SELECT Id, Name, DeveloperName
+  //FROM RecordType
+//SELECT Id, Author__c, Price__c, Year__c, Description__c
+ // FROM Book__c
+ // WHERE Description__c != Null
+
+//SELECT  FirstName, LastName
+//FROM Contact
+//WHERE FirstName LIKE 'A%y'
+
+
+SELECT  FirstName, LastName
+FROM Contact
+WHERE CreatedDate = 

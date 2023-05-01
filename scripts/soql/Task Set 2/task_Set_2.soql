@@ -1,0 +1,8 @@
+//SELECT Id, Name
+//FROM Profile
+//WHERE Name = 'NightWatcher'
+//ProfileId.Name
+//Write a SOQL SELECT statement to retrieve the Name and Profile Name fields for all User records if Profile.Name is NightWatcher Or it Starts with System.
+
+SELECT Name, ProfileId
+  FROM User

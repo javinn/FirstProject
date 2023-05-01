@@ -1,0 +1,74 @@
+// Feel free to use SOQL Building(by flipping the page)
+// to observe what's the correct Object name and fields names 
+
+// Get All the Profiles Id, Name fields 
+// if the profile name is 
+// System Administator, Standard User , Standard Platform User
+
+
+// Get All the Role , Id, Name From Role Standard Object 
+
+// Get All the RecordType , Id, Name From RecordType Standard Object 
+
+//SELECT Id, Name, DeveloperName
+  //FROM UserRole
+
+//SELECT Id, Name, DeveloperName
+  //FROM RecordType
+//SELECT Id, Author__c, Price__c, Year__c, Description__c
+ // FROM Book__c
+ // WHERE Description__c != Null
+
+//SELECT  FirstName, LastName
+//FROM Contact
+//WHERE FirstName LIKE 'A%y'
+
+
+//SELECT  Name, CloseDate, StageName, CreatedDate
+//FROM Opportunity
+//WHERE CloseDate = LAST_N_DAYS:90
+//ORDER BY CloseDate Desc
+
+//SELECT Name, AccountId, Account.Name
+//FROM Contact
+//WHERE AccountId <> null 
+
+//SELECT Subject, Account.Name
+//FROM Case
+//WHERE Account.Name LIKE 'United%'
+
+//SELECT Name, Owner.Name, Account.Name
+//FROM Opportunity
+
+//SELECT Name, Price__c, Contact__r.Name
+  //FROM Book__c
+  //ORDER BY Contact__r.Name ASC NULLS LAST
+
+ // SELECT  Name, Price__c, Contact__r.Name
+ // FROM Book__c
+ // WHERE Contact__r.Name = 'Snow'
+
+//SELECT  COUNT(Id), COUNT_DISTINCT(Name), 
+//SUM(Amount), MAX(Amount), MIN(Amount), AVG(Amount)
+//FROM Opportunity
+
+//SELECT Name, (SELECT Name,Email FROM Contacts)
+//FROM Account
+//ORDER BY CreatedDate ASC
+
+//SELECT Name, (SELECT Subject, Status FROM Cases)
+//FROM Contact
+
+//SELECT Name, (SELECT Name, Price__c FROM Books__r)
+//FROM Contact
+//ORDER BY Name
+
+//SELECT Name, (SELECT FirstName, LastName FROM Contacts WHERE LastName LIKE 'F%')
+//FROM Account
+//WHERE Id IN (SELECT AccountId FROM Contact WHERE LastName LIKE 'F%')
+
+//SELECT Name, AccountId, Account.Name FROM Opportunity
+
+SELECT Name 
+FROM Account
+WHERE Id IN (SELECT AccountId FROM Opportunity)
